@@ -23,17 +23,17 @@ namespace Util {
     void ThrowNodeException(const char *message);
 
     template<typename Class>
-    inline Class Cast(long ptr) {
+    inline Class As(long ptr) {
         return reinterpret_cast<Class>(ptr);
     }
 
     template<typename Class>
-    inline Class GetPtrCast(jclass javaClass, const char *fieldName) {
+    inline Class GetPtrAs(jclass javaClass, const char *fieldName) {
         return static_cast<Class>(GetPtr(javaClass, fieldName));
     }
 
     template<typename Class>
-    inline Class GetPtrCast(jobject instance, const char *fieldName) {
+    inline Class GetPtrAs(jobject instance, const char *fieldName) {
         return static_cast<Class>(GetPtr(instance, fieldName));
     }
 

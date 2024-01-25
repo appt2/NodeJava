@@ -1,7 +1,5 @@
 package com.mucheng.nodejava.core;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class Context {
 
     private final Isolate isolate;
@@ -37,6 +35,10 @@ public class Context {
         nativeEmitProcessExit();
     }
 
+    public void injectJavaBridge() {
+        nativeInjectJavaBridge();
+    }
+
     private native void nativeCreateContext(long isolatePtr);
 
     private native void nativeLoadEnvironment(String source);
@@ -48,6 +50,8 @@ public class Context {
     private native void nativeStop();
 
     private native void nativeEmitProcessExit();
+
+    private native void nativeInjectJavaBridge();
 
     public Isolate getIsolate() {
         return isolate;

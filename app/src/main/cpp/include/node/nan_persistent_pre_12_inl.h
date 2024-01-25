@@ -225,7 +225,7 @@ class Global : public PersistentBase<T> {
     return *this;
   }
   /**
-   * Cast operator for moves.
+   * As operator for moves.
    */
   inline operator RValue() { return RValue(this); }
   /**

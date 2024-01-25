@@ -25,7 +25,7 @@ void Isolate::To(jobject instance, Isolate *self) {
 }
 
 Isolate *Isolate::From(jobject instance) {
-    return Util::GetPtrCast<Isolate *>(instance, "isolatePtr");
+    return Util::GetPtrAs<Isolate *>(instance, "isolatePtr");
 }
 
 extern "C"

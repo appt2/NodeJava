@@ -30,7 +30,7 @@ class ObjectWrap {
   static inline T* Unwrap(v8::Local<v8::Object> object) {
     assert(!object.IsEmpty());
     assert(object->InternalFieldCount() > 0);
-    // Cast to ObjectWrap before casting to T.  A direct cast from void
+    // As to ObjectWrap before casting to T.  A direct cast from void
     // to T won't work right when T has more than one base class.
     void* ptr = GetInternalFieldPointer(object, 0);
     ObjectWrap* wrap = static_cast<ObjectWrap*>(ptr);

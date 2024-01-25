@@ -3,6 +3,7 @@
 #include "Util.h"
 #include "main.h"
 #include "log.h"
+#include "embedding.h"
 #include <jni.h>
 
 Context::Context(Isolate *isolate) {
@@ -25,14 +26,14 @@ void Context::To(jobject instance, Context *self) {
 }
 
 Context *Context::From(jobject instance) {
-    return Util::GetPtrCast<Context *>(instance, "contextPtr");
+    return Util::GetPtrAs<Context *>(instance, "contextPtr");
 }
 
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_mucheng_nodejava_core_Context_nativeCreateContext(JNIEnv *env, jobject thiz,
                                                            jlong isolatePtr) {
-    Isolate *isolate = Util::Cast<Isolate *>(isolatePtr);
+    Isolate *isolate = Util::As<Isolate *>(isolatePtr);
     Context *context = new Context(isolate);
     Context::To(thiz, context);
 }
@@ -154,4 +155,16 @@ Java_com_mucheng_nodejava_core_Context_nativeEvaluateScript(JNIEnv *env, jobject
         }
         return;
     }
+}
+
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_mucheng_nodejava_core_Context_nativeInjectJavaBridge(JNIEnv *env, jobject thiz) {
+    Context *context = Context::From(thiz);
+    AddLinkedBinding(
+            context->environment,
+            "java",
+            JAVA_ACCESSOR_BINDING,
+            nullptr
+    );
 }

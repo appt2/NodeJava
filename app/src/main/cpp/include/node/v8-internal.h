@@ -623,7 +623,7 @@ class Internals {
 };
 
 // Only perform cast check for types derived from v8::Data since
-// other types do not implement the Cast method.
+// other types do not implement the As method.
 template <bool PerformCheck>
 struct CastCheck {
   template <class T>

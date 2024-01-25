@@ -7,11 +7,14 @@
 class Main {
 public:
     static JavaVM *vm;
+
     static JNIEnv *env();
+
     static node::InitializationResult *initializationResult;
+
     static node::MultiIsolatePlatform *platform;
 private:
-    Main() = default;
+    Main() = delete;
 };
 
 #endif //NODEJAVA_MAIN_H

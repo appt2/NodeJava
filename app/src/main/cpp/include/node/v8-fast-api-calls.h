@@ -83,7 +83,7 @@
  *      static void SlowMethod(
  *          const v8::FunctionCallbackInfo<v8::Value>& info) {
  *        v8::Local<v8::Object> instance =
- *          v8::Local<v8::Object>::Cast(info.Holder());
+ *          v8::Local<v8::Object>::As(info.Holder());
  *        CustomEmbedderType* receiver = Unwrap(instance);
  *        // TODO: Do type checks and extract {param}.
  *        receiver->Method(param);

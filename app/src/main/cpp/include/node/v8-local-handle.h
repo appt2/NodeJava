@@ -228,7 +228,7 @@ class Local {
   }
 
   /**
-   * Cast a handle to a subclass, e.g. Local<Value> to Local<Object>.
+   * As a handle to a subclass, e.g. Local<Value> to Local<Object>.
    * This is only valid if the handle actually refers to a value of the
    * target type.
    */
@@ -243,7 +243,7 @@ class Local {
   }
 
   /**
-   * Calling this is equivalent to Local<S>::Cast().
+   * Calling this is equivalent to Local<S>::As().
    * In particular, this is only valid if the handle actually refers to a value
    * of the target type.
    */
